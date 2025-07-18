@@ -20,4 +20,5 @@ model files {
   size      Float
   mimeType  String
   createdAt DateTime @default(now())
+  ownerId String
 }
