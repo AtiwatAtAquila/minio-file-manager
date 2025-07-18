@@ -20,7 +20,7 @@
 
 - `prisma/schema.prisma`
 - `src/database/connection.ts`
-- `src/database/generated/database.ts`
+- `src/database/generated`
 - `prisma/migrations/`
 
 ### งาน A2: การผสานรวม MinIO

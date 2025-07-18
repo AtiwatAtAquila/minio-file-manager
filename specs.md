@@ -31,7 +31,6 @@ Response:
     size: number,
     mimeType: string,
     createdAt: string,
-    minioKey: string
   }[],
   pagination: {
     page: number,
@@ -57,7 +56,6 @@ Request:
 Response:
 {
   uploadUrl: string,
-  minioKey: string,
   fileId: string
 }
 ```
@@ -70,7 +68,6 @@ Response:
 Request:
 {
   fileId: string,
-  minioKey: string
 }
 
 Response:
@@ -141,7 +138,7 @@ Response:
   shareId: string,
   shareUrl: string,
   expiresAt: string,
-  downloadUrl: string
+  downloadUrl?: string
 }
 ```
 
@@ -208,4 +205,3 @@ Response:
   }[]
 }
 ```
-
