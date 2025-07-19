@@ -128,6 +128,16 @@ exports.Prisma.FilesScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.SharesScalarFieldEnum = {
+  id: 'id',
+  fileId: 'fileId',
+  filename: 'filename',
+  shareUrl: 'shareUrl',
+  expireAt: 'expireAt',
+  createdAt: 'createdAt',
+  accessCount: 'accessCount'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -140,7 +150,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  files: 'files'
+  files: 'files',
+  shares: 'shares'
 };
 
 /**
