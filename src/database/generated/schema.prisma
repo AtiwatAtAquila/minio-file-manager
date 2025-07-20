@@ -21,3 +21,13 @@ model files {
   mimeType  String
   createdAt DateTime @default(now())
 }
+
+model shares {
+  id          Int      @id @default(autoincrement())
+  fileId      Int
+  filename    String
+  shareUrl    String
+  expireAt    DateTime
+  createdAt   DateTime @default(now())
+  accessCount Int
+}

@@ -22,3 +22,13 @@ model files {
   createdAt DateTime @default(now())
   owner_id  String
 }
+
+model shares {
+  id Int     @id @default(autoincrement())
+  fileId Int
+  filename String
+  shareUrl String
+  expireAt DateTime
+  createdAt DateTime @default(now())
+  accessCount Int
+}
