@@ -45,3 +45,4 @@ db-data
 /src/generated/prisma
 .env
 minio-data
+dist
