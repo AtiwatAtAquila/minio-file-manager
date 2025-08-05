@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/database/generated"
+  output   = "../src/providers/database/generated"
 }
 
 datasource db {
@@ -24,11 +24,11 @@ model files {
 }
 
 model shares {
-  id Int     @id @default(autoincrement())
-  fileId Int
-  filename String
-  shareUrl String
-  expireAt DateTime
-  createdAt DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  fileId      Int
+  filename    String
+  shareUrl    String
+  expireAt    DateTime
+  createdAt   DateTime @default(now())
   accessCount Int
 }
