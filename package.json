@@ -5,9 +5,12 @@
     "dev": "bun run --watch src/index.ts",
     "build": "bun build.ts",
     "start": "bun run dist/index.js",
+    "test": "bun test",
     "test:watch": "bun --watch test",
+    "test:coverage": "bun test --coverage",
     "lint": "bun x --bun biome lint",
-    "db:migrate": "bun x prisma migrate dev"
+    "db:migrate": "bun x prisma migrate dev",
+    "db:seed": "bun src/providers/database/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.12.0",
