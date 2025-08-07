@@ -1,0 +1,8 @@
+node_modules
+dist
+db-data
+minio-data
+.env
+.env.example
+README.md
+docs

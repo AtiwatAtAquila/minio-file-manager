@@ -59,3 +59,45 @@ bun x prisma db push
 ```sh
 bun x prisma migrate reset
 ```
+
+# Build docker image
+
+```sh
+docker build -t minio-file-manager .
+```
+
+# build docker image via docker compose
+
+```sh
+docker compose build
+```
+
+# Start app container via docker compose
+
+```sh
+docker compose up -d
+```
+
+# Start Database services
+
+```sh
+docker compose -f compose.services.yaml up -d
+```
+
+# Env Setup for Docker compose
+
+```sh
+DATABASE_URL="postgresql://<user>:<password>@<postgres uri>:5432/docs"
+MINIO_ENDPOINT="http://<redis uri>:9000"
+MINIO_ACCESS_KEY="<minio access key>"
+MINIO_SECRET_KEY="<minio secret key>"
+```
+
+# How to run minio-file-manager
+
+```sh
+docker compose -f compose.services.yaml up -d
+docker compose up -d
+```
+
+go to url http://localhost:3000

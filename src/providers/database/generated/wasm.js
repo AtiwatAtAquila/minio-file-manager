@@ -127,7 +127,7 @@ exports.Prisma.FileScalarFieldEnum = {
   fileSize: 'fileSize',
   minioKey: 'minioKey',
   uploadStatus: 'uploadStatus',
-  uploadedAt: 'uploadedAt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 

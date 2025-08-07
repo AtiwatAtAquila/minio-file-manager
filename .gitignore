@@ -46,3 +46,4 @@ db-data
 .env
 minio-data
 dist
+redis_data
