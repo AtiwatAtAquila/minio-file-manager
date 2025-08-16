@@ -35,12 +35,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.12.0
- * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
+ * Prisma Client JS version: 6.13.0
+ * Query Engine version: 361e86d0ea4987e9f53a565309b3eed797a6bcbd
  */
 Prisma.prismaVersion = {
-  client: "6.12.0",
-  engine: "8047c96bbd92db98a2abc7c9323ce77c02c89dbc"
+  client: "6.13.0",
+  engine: "361e86d0ea4987e9f53a565309b3eed797a6bcbd"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -148,7 +148,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/atiwatseenark/Documents/minio-file-manager/src/providers/database/generated",
+      "value": "C:\\Users\\D3C3M\\Desktop\\minio-file-manager\\src\\providers\\database\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -157,25 +157,26 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/atiwatseenark/Documents/minio-file-manager/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\D3C3M\\Desktop\\minio-file-manager\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../../../.env",
     "schemaEnvPath": "../../../../.env"
   },
   "relativePath": "../../../../prisma",
-  "clientVersion": "6.12.0",
-  "engineVersion": "8047c96bbd92db98a2abc7c9323ce77c02c89dbc",
+  "clientVersion": "6.13.0",
+  "engineVersion": "361e86d0ea4987e9f53a565309b3eed797a6bcbd",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
