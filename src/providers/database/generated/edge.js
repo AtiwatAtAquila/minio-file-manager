@@ -148,7 +148,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/atiwatseenark/Documents/minio-file-manager/src/providers/database/generated",
+      "value": "C:\\Users\\User\\Desktop\\minio-file-manager\\src\\providers\\database\\generated",
       "fromEnvVar": null
     },
     "config": {
@@ -157,12 +157,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/atiwatseenark/Documents/minio-file-manager/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\User\\Desktop\\minio-file-manager\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
