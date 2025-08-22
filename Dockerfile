@@ -1,6 +1,5 @@
 FROM oven/bun:1 AS builder
 WORKDIR /app
-RUN apt-get update -y && apt-get install -y openssl
 COPY ./package.json ./
 RUN bun i
 COPY . .
@@ -10,7 +9,6 @@ RUN bun run build
 
 FROM oven/bun:1 AS app
 WORKDIR /app
-RUN apt-get update -y && apt-get install -y openssl
 COPY ./package.json ./
 RUN bun install --production
 COPY --from=builder /app/dist /app/dist
