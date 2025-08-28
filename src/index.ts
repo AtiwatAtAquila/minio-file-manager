@@ -1,60 +1,35 @@
+import "dotenv/config";
 import { Elysia } from "elysia";
-import { cors } from "@elysiajs/cors";
-import { swagger } from '@elysiajs/swagger';
-import { healthController } from "./features/health/health.controller";
-import { logger } from "./middleware/logger";
-
-import 'dotenv/config';
+import { swagger } from "@elysiajs/swagger";
+import { app as appRoutes } from "./features/app";
+import { minio, redis } from "./providers";
+import { corsMiddleware } from "./shared/middleware/cors";
+import { errorHandler } from "./shared/middleware/error-handler";
+import { loggerMiddleware } from "./shared/middleware/logger";
+import { env } from "./shared/config/env";
+import { appConfig } from "./shared/config/app.config";
+import { FilesController } from "./features/files/files.controller";
 
 const app = new Elysia()
-  .get("/",
-  () => "Hello Elysia")
+	.use(errorHandler)
+	.use(corsMiddleware)
+	.use(loggerMiddleware)
+	.use(
+		swagger({
+			path: "/docs",
+			documentation: {
+				info: {
+					title: appConfig.name,
+					version: appConfig.version,
+				},
+			},
+		}),
+	)
+	.use(FilesController.filesController)
+	.get("/", () => "Hello Elysia")
+	.use(appRoutes(redis, minio))
+	.listen(env.APP_PORT);
 
-  .use(logger)
-  .use(
-    cors({
-      origin: "*",
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-      allowedHeaders: ["Content-Type", "Authorization"],
-    })
-  )
-  .use(
-    swagger({
-      path: "/docs",
-      documentation: {
-        info: {
-          title: 'Project API Documentation',
-          version: '1.0.0',
-          description: 'REST API for file management system.',
-        },
-        tags: [
-          { name: 'Health', description: 'API status check' },
-          { name: 'Files', description: 'File management operations' },
-          { name: 'Roles', description: 'Role and permission management' },
-        ],
-      },
-      // scalar: true,
-    })
-  )
-
-app.onError(({ code, error }) => {
-  if (code === 'NOT_FOUND') {
-    return new Response('Not Found', { status: 404 });
-  }
-  return new Response('Internal Server Error', { status: 500 });
-})
-
-app.use(healthController);
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`);
-});
-
-process.on('SIGINT', async () => {
-  console.log('Shutting down server gracefully...');
-  await app.stop();
-  console.log('Server shut down successfully.');
-  process.exit(0);
-});
+console.log(
+	`🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}/docs successfully`,
+);

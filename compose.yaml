@@ -7,14 +7,17 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL="postgresql://postgres:mysecretpassword@postgres:5432/docs"
-      - MINIO_ENDPOINT="http://redis:9000"
+      - MINIO_ENDPOINT=minio 
+      - MINIO_PORT=9000
       - MINIO_ACCESS_KEY="my_access_key"
       - MINIO_SECRET_KEY="my_secret_key"
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     networks:
       - minio-services
   app-migrate-deploy:
     build:
-      context: .
+      context: .  
       dockerfile: Dockerfile
       target: builder
     command: bun x prisma migrate deploy
@@ -22,9 +25,12 @@ services:
       - "3000:3000"
     environment:
       - DATABASE_URL="postgresql://postgres:mysecretpassword@postgres:5432/docs"
-      - MINIO_ENDPOINT="http://redis:9000"
+      - MINIO_ENDPOINT=minio
+      - MINIO_PORT=9000
       - MINIO_ACCESS_KEY="my_access_key"
       - MINIO_SECRET_KEY="my_secret_key"
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     networks:
       - minio-services
 

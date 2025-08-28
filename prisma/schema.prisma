@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
   output   = "../src/providers/database/generated"
 }
 
@@ -18,8 +18,7 @@ model File {
   id           String           @id @default(uuid()) @db.Uuid
   filename     String           @db.VarChar(255)
   filetype     String           @db.VarChar(100)
-  fileSize     BigInt           @db.BigInt
-  minioKey     String           @unique @db.VarChar(500)
+  fileSize     Int
   uploadStatus FileUploadStatus @default(PENDING)
   createdAt    DateTime         @default(now()) @db.Timestamp(6)
   updatedAt    DateTime         @updatedAt @db.Timestamp(6)
