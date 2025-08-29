@@ -1,12 +1,14 @@
 import { Elysia } from "elysia";
 import { PrismaClient } from "../../providers/database/generated";
-import Redis from 'ioredis';
+import { createClient } from "redis";
 import { Client } from 'minio';
 
 const prisma = new PrismaClient();
-const redis = new Redis({
+const redis = createClient({
+  socket: {
     host: process.env.REDIS_HOST || 'localhost',
     port: parseInt(process.env.REDIS_PORT || '6379', 10),
+  },
 });
 
 const minioClient = new Client({
