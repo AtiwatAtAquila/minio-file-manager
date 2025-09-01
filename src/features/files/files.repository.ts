@@ -8,7 +8,6 @@ export namespace FilesRepository {
 		return prisma.file.create({
 			data: {
 				...file,
-				minioKey: "",
 			},
 		});
 	}
