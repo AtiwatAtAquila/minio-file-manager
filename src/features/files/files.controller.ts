@@ -52,7 +52,7 @@ export namespace FilesController {
           throw new Error(`File not found with id ${params.id}`);
         }
         return fileById;
-},
+      },
       {
         params: t.Object({
           id: t.String(),
