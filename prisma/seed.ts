@@ -1,4 +1,4 @@
-import { PrismaClient, FileUploadStatus } from '../src/providers/database/generated'
+import { PrismaClient, FileUploadStatus } from '../src/providers/database/generated/client'
 
 const prisma = new PrismaClient()
 
@@ -20,8 +20,7 @@ async function main() {
     data: {
       filename: 'test-document.pdf',
       filetype: 'application/pdf',
-      fileSize: BigInt(1024 * 1024), // 1MB
-      minioKey: 'test/test-document.pdf',
+      fileSize: 1024 * 1024, // 1MB
       uploadStatus: FileUploadStatus.COMPLETED,
       permissions: {
         create: {

@@ -1,7 +1,11 @@
+import { minio } from "@/providers";
 import { FilesRepository } from "./files.repository";
 import { FileSchema } from "./files.schema";
+import { getContentTypeFromFileType } from "@/shared/content-type";
 
 export namespace FilesService {
+	const BUCKET_NAME = "files" as const;
+
 	export function create(
 		file: Pick<FileSchema, "filename" | "filetype" | "fileSize">,
 	) {
@@ -35,5 +39,26 @@ export namespace FilesService {
 
 	export function deleteById(fileId: string) {
 		return FilesRepository.deleteById(fileId);
+	}
+
+	export async function createPreSignUrl(fileId: string) {
+		const file = await findById(fileId);
+		if (!file) {
+			return null;
+		}
+
+		const expireInSeconds = 60 * 5;
+		const url = await minio.presignedPutObject(
+			BUCKET_NAME,
+			file.filename,
+			expireInSeconds,
+		);
+
+		return {
+			url,
+			file,
+			contentType: getContentTypeFromFileType(file.filetype),
+			method: "PUT",
+		};
 	}
 }
