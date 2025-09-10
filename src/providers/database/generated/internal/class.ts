@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "/Users/atiwatseenark/Documents/minio-file-manager/src/providers/database/generated",
+      "value": "/Volumes/HadesGodBlue/aqs/2025/minio-file-manager/src/providers/database/generated",
       "fromEnvVar": null
     },
     "config": {
@@ -36,7 +36,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/atiwatseenark/Documents/minio-file-manager/prisma/schema.prisma",
+    "sourceFilePath": "/Volumes/HadesGodBlue/aqs/2025/minio-file-manager/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../../../prisma",
@@ -46,6 +46,7 @@ const config: runtime.GetPrismaClientConfig = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
