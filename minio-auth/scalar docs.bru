@@ -1,0 +1,23 @@
+meta {
+  name: scalar docs
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://myweb.com/docs
+  body: none
+  auth: bearer
+}
+
+headers {
+  ~Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYyIsImlhdCI6MTc1NzUwMDY3M30.BeNh2_zmJBXWzoqALkeY1I9Tdxi1NV7_j7MEojoOOfk
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYyIsImlhdCI6MTc1NzUwMDY3M30.BeNh2_zmJBXWzoqALkeY1I9Tdxi1NV7_j7MEojoOOfk
+}
+
+settings {
+  encodeUrl: true
+}
