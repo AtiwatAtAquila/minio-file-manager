@@ -26,7 +26,9 @@ const app = new Elysia()
 		}),
 	)
 	.use(FilesController.filesController)
-	.get("/", () => "Hello Elysia")
+	.get("/", () => {
+		return "Hello Elysia";
+	})
 	.use(appRoutes(redis, minio))
 	.listen(env.APP_PORT);
 

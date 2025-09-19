@@ -1,13 +1,23 @@
-import Elysia, { t } from "elysia";
+import Elysia, { status, t } from "elysia";
 import { fileSchema } from "./files.schema";
 import { FilesService } from "./files.service";
 import prisma from "@/providers/database/database.provider";
 
 export namespace FilesController {
 	export const filesController = new Elysia({ prefix: "/files" })
+		.derive(({ headers, set }) => {
+			const username = headers["x-username"];
+			if (username === undefined) {
+				set.status = 401;
+				return null;
+			}
+			return {
+				username,
+			};
+		})
 		.post(
 			"/",
-			async ({ body, set }) => {
+			async ({ body, set, username }) => {
 				try {
 					const file = await FilesService.create(body);
 
@@ -33,12 +43,19 @@ export namespace FilesController {
 				tags: ["Files"],
 			},
 		)
-		.get("/", () => {}, {
-			tags: ["Files"],
-		})
+		.get(
+			"/",
+			({ username }) => {
+				console.log("username", username);
+				return [];
+			},
+			{
+				tags: ["Files"],
+			},
+		)
 		.post(
 			"/:id/presigned-url",
-			async ({ params, set }) => {
+			async ({ params, set, username }) => {
 				if (params.id.length !== 36) {
 					set.status = "Bad Request";
 					return {
