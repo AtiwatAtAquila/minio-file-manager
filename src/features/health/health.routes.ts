@@ -1,9 +1,7 @@
 import { Elysia, t } from "elysia";
 import { getHealthStatus } from "./health.service";
-import { createClient } from "redis";
-import { Client as MinioClient } from "minio";
 
-export const healthRoutes = (redis: ReturnType<typeof createClient>, minio: MinioClient) => {
+export const healthRoutes = () => {
   return new Elysia({ prefix: "/health", tags: ["Health"] }).get(
     "/",
     getHealthStatus(),

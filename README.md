@@ -96,6 +96,7 @@ MINIO_SECRET_KEY="<minio secret key>"
 # How to run minio-file-manager
 
 ```sh
+docker compose -f compose.caddy.yaml up -d
 docker compose -f compose.services.yaml up -d
 docker compose up -d
 ```

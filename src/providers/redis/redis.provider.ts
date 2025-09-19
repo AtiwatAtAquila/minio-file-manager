@@ -1,5 +1,5 @@
-import { createClient } from "redis";
-import { env } from "../../shared/config/env";
+import { createClient }  from 'redis';
+import { env } from '../../shared/config/env';
 
 export const redis = createClient({
   socket: {
@@ -9,7 +9,7 @@ export const redis = createClient({
   password: env.REDIS_PASSWORD,
 });
 
-redis.on("error", (err) => console.log("Redis Client Error", err));
+redis.on('error', (err) => console.log('Redis Client Error', err));
 
 (async () => {
   await redis.connect();
